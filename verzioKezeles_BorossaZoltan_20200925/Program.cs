@@ -11,6 +11,9 @@ namespace HarcosProjekt
         static void Main(string[] args)
         {
             List<Harcos> harcosok = new List<Harcos>();
+
+            harcosok = new List<Harcos>() {new Harcos("Szabi", 2) , new Harcos("Zsombi", 1), new Harcos("Zoli", 3) };
+
         }
     }
 }
