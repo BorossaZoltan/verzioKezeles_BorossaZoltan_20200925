@@ -51,7 +51,40 @@ namespace verzioKezeles_BorossaZoltan_20200925
 
         public void Megkuzd(Harcos masikHarcos)
         {
-            
+            if (this == masikHarcos)
+            {
+                Console.WriteLine("A két harcos ugyan az a személy.");
+            }
+            if (this.eletero == 0 || masikHarcos.eletero == 0)
+            {
+                Console.WriteLine("A harcos életereje 0.");
+            }
+            else
+            {
+                //harc eleje
+                 masikHarcos.Eletero -= this.Sebzes;
+                 if (masikHarcos.Eletero>0)
+                 {
+                     this.Eletero -= masikHarcos.Sebzes;
+                 }
+                 //harc vége
+                 //tapasztalatosztás eleje
+                if (masikHarcos.Eletero>0 && this.Eletero > 0)
+                {
+                    masikHarcos.Tapasztalat += 5;
+                    this.Tapasztalat += 5;
+                }
+                if (masikHarcos.Eletero>0&& this.Eletero<=0)
+                {
+                    masikHarcos.Tapasztalat += 15;
+                }
+                else if (masikHarcos.Eletero <= 0 && this.Eletero > 0)
+                {
+                    this.Tapasztalat += 15;
+                }
+                //tapasztalatosztás vége
+
+            }
         }
         public void Gyogyul()
         {
