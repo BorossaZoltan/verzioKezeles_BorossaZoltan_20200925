@@ -61,7 +61,11 @@ namespace verzioKezeles_BorossaZoltan_20200925
         {
             get
             {
-                return " ";
+                return String.Format("{0}" +
+                    " - LVL:{1}" +
+                    " - EXP:{2}" +
+                    " - HP:{3}" +
+                    " - DMG: {4}", nev, szint, tapasztalat/SzintLepeshez, eletero/MaxEletero, Sebzes);
             }
         }
     }
