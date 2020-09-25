@@ -40,9 +40,40 @@ namespace verzioKezeles_BorossaZoltan_20200925
         }
 
         public string Nev { get => nev; set => nev = value; }
-        public int Szint { get => szint; set => szint = value; }
-        public int Tapasztalat { get => tapasztalat; set => tapasztalat = value; }
-        public int Eletero { get => eletero; set => eletero = value; }
+        public int Szint { get => szint; 
+            set {
+                if (this.SzintLepeshez <= this.Tapasztalat)
+                {
+                    this.Tapasztalat -= this.SzintLepeshez;
+                    this.Eletero = MaxEletero;
+                }
+            } 
+        }
+        public int Tapasztalat
+        {
+            get => tapasztalat;
+            set
+            {
+                if (SzintLepeshez <= this.Tapasztalat)
+                {
+                    this.Szint++;
+                }
+            }
+        }
+
+        public int Eletero
+        {
+            get => eletero; 
+            set{
+                if (this.Eletero == 0)
+                {
+                    this.Tapasztalat = 0;
+                }
+                if (this.Eletero>MaxEletero)
+                {
+                    this.Eletero = MaxEletero;
+                }
+            } }
         public int AlapEletero { get => alapEletero;}
         public int AlapSebzes { get => alapSebzes;}
         public int Sebzes { get => (alapSebzes + szint); }
