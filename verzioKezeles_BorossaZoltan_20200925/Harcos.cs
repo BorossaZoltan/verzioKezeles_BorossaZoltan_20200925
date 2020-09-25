@@ -30,5 +30,20 @@ namespace verzioKezeles_BorossaZoltan_20200925
         public int SzintLepeshez { get => (10 + szint * 5); }
         public int MaxEletero { get => (alapEletero + szint * 3); }
 
+        public void Megkuzd(Harcos masikHarcos)
+        {
+            
+        }
+        public void Gyogyul()
+        {
+
+        }
+        public string ToString
+        {
+            get
+            {
+                return " ";
+            }
+        }
     }
 }
