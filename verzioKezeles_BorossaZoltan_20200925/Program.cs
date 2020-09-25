@@ -10,7 +10,7 @@ namespace HarcosProjekt
     {
         static void Main(string[] args)
         {
-
+            List<Harcos> harcosok = new List<Harcos>();
         }
     }
 }
