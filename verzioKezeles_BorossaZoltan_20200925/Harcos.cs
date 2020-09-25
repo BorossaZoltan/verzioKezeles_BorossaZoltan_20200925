@@ -89,6 +89,16 @@ namespace verzioKezeles_BorossaZoltan_20200925
         public void Gyogyul()
         {
 
+            if (this.Eletero <= 0)
+            {
+                this.Eletero = MaxEletero;
+            }
+            else
+            {
+                this.Eletero = 3 + Szint;
+            }
+            
+
         }
         public string ToString
         {
