@@ -131,6 +131,9 @@ namespace HarcosProjekt
             
 
         }
+
+
+
         public override string ToString()
         {
             
