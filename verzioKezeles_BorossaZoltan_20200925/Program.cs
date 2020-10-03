@@ -39,6 +39,7 @@ namespace HarcosProjekt
                     Console.WriteLine("HIBÁS adat!");
                 }
             } while (!(statusz >0 && statusz<4));
+            
             return new Harcos(felhasznaloNev, statusz);
         }
 
@@ -66,7 +67,30 @@ namespace HarcosProjekt
                 {
                     Console.WriteLine("Nincs ilyen menüpont, adja meg újra!");
                 }
-                
+                if (betujel.Equals("a"))
+                {
+                    int melyikHarcos = 0;
+                    do
+                    {
+                        Console.WriteLine("Melyik harcossal szeretne megküzdeni?");
+                        melyikHarcos = Convert.ToInt32(Console.ReadLine());
+
+
+                        if (melyikHarcos > harcosok.Count || melyikHarcos<1)
+                        {
+                            Console.WriteLine("Nincs ilyen sorszámú harcos");
+                        }
+                        else
+                        {
+                            harcosok[harcosok.Count - 1].Megkuzd(harcosok[melyikHarcos-1]);
+                        }
+
+                    } while (!(melyikHarcos > 0 && melyikHarcos < harcosok.Count-1));
+                }
+                if (betujel.Equals("b"))
+                {
+                    harcosok[harcosok.Count - 1].Gyogyul();
+                }
 
 
             } while (!(betujel=="a" || betujel =="b" || betujel == "c"));
@@ -86,9 +110,9 @@ namespace HarcosProjekt
 
             harcosok.Add(felhasznaloLetrehozas());
             Console.WriteLine(harcosok[harcosok.Count-1]);
-            osszesHarcosKiir();
             do
             {
+                osszesHarcosKiir();
                 menu();
             } while (betujel!="c");
             
