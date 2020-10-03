@@ -52,19 +52,21 @@ namespace HarcosProjekt
 
         public static void menu()
         {
-            char betujel;
+            string betujel = " ";
             Console.WriteLine("Mit szeretnél tenni? (üsse be a megfelelő betűjelet)");
             Console.WriteLine("\ta.) Megküzdeni egy harcossal" +
                 "\n\tb.) Gyógyulni" +
                 "\n\tc.) Kilépni");
             do
             {
-                betujel = Convert.ToChar(Console.ReadLine().ToLower());
-                if (betujel != 'a' || betujel != 'b' || betujel != 'c')
+                betujel = Console.ReadLine();
+
+                if (!(betujel.Equals("a")|| betujel.Equals("b") || betujel.Equals("c")))
                 {
                     Console.WriteLine("Nincs ilyen menüpont, adja meg újra!");
                 }
-            } while (betujel=='a' || betujel =='b' || betujel == 'c');
+                
+            } while (!(betujel=="a" || betujel =="b" || betujel == "c"));
         }
 
         static void Main(string[] args)
