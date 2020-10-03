@@ -21,7 +21,7 @@ namespace HarcosProjekt
             sr.Close();
         }
 
-        public static void felhasznaloLetrehozas()
+        public static Harcos felhasznaloLetrehozas()
         {
             string felhasznaloNev;
             int statusz;
@@ -39,6 +39,7 @@ namespace HarcosProjekt
                     Console.WriteLine("HIBÁS adat!");
                 }
             } while (!(statusz >0 && statusz<4));
+            return new Harcos(felhasznaloNev, statusz);
         }
 
         static void Main(string[] args)
@@ -47,12 +48,15 @@ namespace HarcosProjekt
 
             harcosok = new List<Harcos>() {new Harcos("Szabi", 2) , new Harcos("Zsombi", 1), new Harcos("Zoli", 3) };
             beolvas("harcosok.csv");
+            
             for (int i = 0; i < harcosok.Count; i++)
             {
                 Console.WriteLine(harcosok[i]);
             }
 
-            felhasznaloLetrehozas();
+            harcosok.Add(felhasznaloLetrehozas());
+            Console.WriteLine(harcosok[harcosok.Count-1]);
+
             Console.ReadKey();
         }
     }
