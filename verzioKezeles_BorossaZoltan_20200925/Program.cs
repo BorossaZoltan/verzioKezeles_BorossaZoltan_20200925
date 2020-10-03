@@ -42,10 +42,16 @@ namespace HarcosProjekt
             return new Harcos(felhasznaloNev, statusz);
         }
 
+        public static void osszesHarcosKiir()
+        {
+            for (int i = 0; i < harcosok.Count; i++)
+            {
+                Console.WriteLine((i+1)+".\t"+harcosok[i]);
+            }
+        }
+
         static void Main(string[] args)
         {
-            
-
             harcosok = new List<Harcos>() {new Harcos("Szabi", 2) , new Harcos("Zsombi", 1), new Harcos("Zoli", 3) };
             beolvas("harcosok.csv");
             
@@ -56,6 +62,7 @@ namespace HarcosProjekt
 
             harcosok.Add(felhasznaloLetrehozas());
             Console.WriteLine(harcosok[harcosok.Count-1]);
+            osszesHarcosKiir();
 
             Console.ReadKey();
         }
