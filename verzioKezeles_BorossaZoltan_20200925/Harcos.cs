@@ -46,7 +46,9 @@ namespace HarcosProjekt
                 {
                     this.Tapasztalat -= this.SzintLepeshez;
                     this.Eletero = MaxEletero;
+                    this.szint = value;
                 }
+                
             } 
         }
         public int Tapasztalat
@@ -58,6 +60,10 @@ namespace HarcosProjekt
                 {
                     this.Szint++;
                 }
+                else
+                {
+                    this.tapasztalat = value;
+                }
             }
         }
 
@@ -65,14 +71,16 @@ namespace HarcosProjekt
         {
             get => eletero; 
             set{
-                if (this.Eletero == 0)
+                if (this.Eletero <= 0)
                 {
-                    this.Tapasztalat = 0;
+                    this.tapasztalat = 0;
+                    this.eletero = 0;
                 }
-                if (this.Eletero>MaxEletero)
+                if (this.Eletero > MaxEletero)
                 {
                     this.Eletero = MaxEletero;
                 }
+                else this.eletero = value;
             } }
         public int AlapEletero { get => alapEletero;}
         public int AlapSebzes { get => alapSebzes;}
@@ -115,6 +123,9 @@ namespace HarcosProjekt
                 }
                 //tapasztalatosztás vége
 
+                this.Eletero += 0;
+                masikHarcos.Eletero += 0;
+                
             }
         }
         public void Gyogyul()
@@ -129,7 +140,6 @@ namespace HarcosProjekt
                 this.Eletero = 3 + Szint;
             }
             
-
         }
 
 
