@@ -50,9 +50,10 @@ namespace HarcosProjekt
             }
         }
 
+        public static string betujel = " ";
         public static void menu()
         {
-            string betujel = " ";
+            
             Console.WriteLine("Mit szeretnél tenni? (üsse be a megfelelő betűjelet)");
             Console.WriteLine("\ta.) Megküzdeni egy harcossal" +
                 "\n\tb.) Gyógyulni" +
@@ -66,7 +67,11 @@ namespace HarcosProjekt
                     Console.WriteLine("Nincs ilyen menüpont, adja meg újra!");
                 }
                 
+
+
             } while (!(betujel=="a" || betujel =="b" || betujel == "c"));
+
+
         }
 
         static void Main(string[] args)
@@ -82,7 +87,11 @@ namespace HarcosProjekt
             harcosok.Add(felhasznaloLetrehozas());
             Console.WriteLine(harcosok[harcosok.Count-1]);
             osszesHarcosKiir();
-            menu();
+            do
+            {
+                menu();
+            } while (betujel!="c");
+            
 
 
             Console.ReadKey();
