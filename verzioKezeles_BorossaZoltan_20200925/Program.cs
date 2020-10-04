@@ -85,7 +85,7 @@ namespace HarcosProjekt
                             harcosok[harcosok.Count - 1].Megkuzd(harcosok[melyikHarcos-1]);
                         }
 
-                    } while (!(melyikHarcos > 0 && melyikHarcos < harcosok.Count-1));
+                    } while (!(melyikHarcos > 0 && melyikHarcos <= harcosok.Count-1));
                 }
                 if (betujel.Equals("b"))
                 {
