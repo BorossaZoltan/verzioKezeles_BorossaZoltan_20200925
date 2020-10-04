@@ -110,7 +110,9 @@ namespace HarcosProjekt
                     Random r = new Random();
                     szam = r.Next(harcosok.Count - 1);
                 } while (harcosok[szam].Eletero == 0);
+                Console.WriteLine("------------------------------------------------------------------------------------------");
                 Console.WriteLine("Téged megtámadott: "+harcosok[szam].Nev);
+                Console.WriteLine("------------------------------------------------------------------------------------------");
                 harcosok[szam].Megkuzd(harcosok[harcosok.Count-1]);
                 for (int i = 0; i < harcosok.Count; i++)
                 {
