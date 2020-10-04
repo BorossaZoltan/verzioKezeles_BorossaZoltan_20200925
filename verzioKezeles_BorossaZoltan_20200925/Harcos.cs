@@ -40,12 +40,18 @@ namespace HarcosProjekt
         }
 
         public string Nev { get => nev; set => nev = value; }
-        public int Szint { get => szint; 
+        public int Szint {
+            get
+            {
+                return this.szint;
+                
+
+            }
             set {
                 if (this.SzintLepeshez <= this.Tapasztalat)
                 {
-                    this.Tapasztalat -= this.SzintLepeshez;
-                    this.Eletero = MaxEletero;
+                    this.tapasztalat -= this.SzintLepeshez;
+                    this.eletero = MaxEletero;
                     this.szint = value;
                 }
                 
@@ -69,11 +75,23 @@ namespace HarcosProjekt
 
         public int Eletero
         {
-            get => eletero; 
-            set{
-                if (this.Eletero <= 0)
+            get{
+                    if (this.eletero <= 0)
+                    {
+                        return this.eletero = 0;
+                    }
+                if (this.eletero>MaxEletero)
                 {
-                    this.tapasztalat = 0;
+                    this.eletero = MaxEletero;
+                }
+                return this.eletero;
+                }
+
+                
+            set{
+                if (this.Eletero < 0)
+                {
+                    this.Tapasztalat = 0;
                     this.eletero = 0;
                 }
                 if (this.Eletero > MaxEletero)
@@ -135,9 +153,9 @@ namespace HarcosProjekt
             {
                 this.Eletero = MaxEletero;
             }
-            else
+            else if (this.eletero >0 && this.eletero< MaxEletero)
             {
-                this.Eletero = 3 + Szint;
+                this.Eletero += 3 + Szint;
             }
             
         }
