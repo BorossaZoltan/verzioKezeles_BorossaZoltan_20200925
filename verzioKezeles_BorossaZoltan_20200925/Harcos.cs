@@ -134,10 +134,22 @@ namespace HarcosProjekt
                 if (masikHarcos.Eletero>0&& this.Eletero<=0)
                 {
                     masikHarcos.Tapasztalat += 15;
+                    if (masikHarcos.Tapasztalat > SzintLepeshez)
+                    {
+                        Szint++;
+                        masikHarcos.eletero = MaxEletero;
+                    }
+                    this.tapasztalat = 0;
                 }
                 else if (masikHarcos.Eletero <= 0 && this.Eletero > 0)
                 {
                     this.Tapasztalat += 15;
+                    if (this.Tapasztalat > SzintLepeshez)
+                    {
+                        Szint++;
+                        this.eletero = MaxEletero;
+                    }
+                    masikHarcos.tapasztalat = 0;
                 }
                 //tapasztalatosztás vége
 
@@ -156,6 +168,10 @@ namespace HarcosProjekt
             else if (this.eletero >0 && this.eletero< MaxEletero)
             {
                 this.Eletero += 3 + Szint;
+            }
+            if (this.eletero > MaxEletero)
+            {
+                this.eletero = MaxEletero;
             }
             
         }
