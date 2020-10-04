@@ -25,7 +25,7 @@ namespace HarcosProjekt
         {
             string felhasznaloNev;
             int statusz;
-            Console.WriteLine("Adja meg a karaktere felhasználó nevét!");
+            Console.WriteLine("\n\nAdja meg a karaktere felhasználó nevét!");
             felhasznaloNev = Console.ReadLine();
             Console.WriteLine("Adja meg a karaktere státusz sablonját!");
             Console.WriteLine("1.\t HP:18/18 - DMG: 4\n" +
@@ -39,7 +39,7 @@ namespace HarcosProjekt
                     Console.WriteLine("HIBÁS adat!");
                 }
             } while (!(statusz >0 && statusz<4));
-            
+            Console.WriteLine("------------------------------------------------------------------------------------------");
             return new Harcos(felhasznaloNev, statusz);
         }
 
@@ -54,8 +54,8 @@ namespace HarcosProjekt
         public static string betujel = " ";
         public static void menu()
         {
-            
-            Console.WriteLine("Mit szeretnél tenni? (üsse be a megfelelő betűjelet)");
+            Console.WriteLine("------------------------------------------------------------------------------------------");
+            Console.WriteLine("\n\nMit szeretnél tenni? (üsse be a megfelelő betűjelet)\n");
             Console.WriteLine("\ta.) Megküzdeni egy harcossal" +
                 "\n\tb.) Gyógyulni" +
                 "\n\tc.) Kilépni");
@@ -84,8 +84,9 @@ namespace HarcosProjekt
                         {
                             harcosok[harcosok.Count - 1].Megkuzd(harcosok[melyikHarcos-1]);
                         }
-
+                        harmadikKorben();
                     } while (!(melyikHarcos > 0 && melyikHarcos <= harcosok.Count-1));
+                        Console.WriteLine("------------------------------------------------------------------------------------------");
                 }
                 if (betujel.Equals("b"))
                 {
@@ -97,9 +98,35 @@ namespace HarcosProjekt
 
 
         }
+        public static int korokszama = 0;
+        public static void harmadikKorben()
+        {
+            
+            if (korokszama == 2)
+            {
+                int szam;
+                do
+                {
+                    Random r = new Random();
+                    szam = r.Next(harcosok.Count - 1);
+                } while (harcosok[szam].Eletero == 0);
+                Console.WriteLine("Téged megtámadott: "+harcosok[szam].Nev);
+                harcosok[szam].Megkuzd(harcosok[harcosok.Count-1]);
+                for (int i = 0; i < harcosok.Count; i++)
+                {
+                    harcosok[i].Gyogyul();
+                }
+                korokszama = 0;
+            }
+            korokszama++;
+
+
+        }
+
 
         static void Main(string[] args)
         {
+            Console.WriteLine("------------------------------------------------------------------------------------------");
             harcosok = new List<Harcos>() {new Harcos("Szabi", 2) , new Harcos("Zsombi", 1), new Harcos("Zoli", 3) };
             beolvas("harcosok.csv");
             
@@ -107,18 +134,20 @@ namespace HarcosProjekt
             {
                 Console.WriteLine(harcosok[i]);
             }
-
+            Console.WriteLine("------------------------------------------------------------------------------------------");
             harcosok.Add(felhasznaloLetrehozas());
             Console.WriteLine(harcosok[harcosok.Count-1]);
             do
             {
                 osszesHarcosKiir();
                 menu();
+                
             } while (betujel!="c");
             
 
 
             Console.ReadKey();
         }
+
     }
 }
